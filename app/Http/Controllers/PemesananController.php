@@ -102,8 +102,16 @@ class PemesananController extends Controller
         $status_pembayaran = $Pemesanan->status_pembayaran;
         $status_ulasan = $Pemesanan->status_ulasan;
         $Pembayaran = Pembayaran::where('pemesanan_id',$id)->first();
-        $metode_pembayaran = $Pembayaran->metode_pembayaran;
-        return view('admin.detailantrian', compact('Pemesanan','metode_pembayaran','status_pesan','status_checkin','status_pembayaran','status_ulasan'));
+        $terdapat = Pembayaran::find($id);
+        if($terdapat){
+            $metode_pembayaran = $Pembayaran->metode_pembayaran;
+            $tidakterdapatpembayaran=0;
+            return view('admin.detailantrian', compact('tidakterdapatpembayaran','Pemesanan','metode_pembayaran','status_pesan','status_checkin','status_pembayaran','status_ulasan'));
+        }else{
+            $tidakterdapatpembayaran=1;
+            return view('admin.detailantrian', compact('tidakterdapatpembayaran','Pemesanan','status_pesan','status_checkin','status_pembayaran','status_ulasan'));
+
+        }
     }
 
     public function lihat(Pemesanan $pemesanan,$id)
@@ -191,7 +199,7 @@ class PemesananController extends Controller
 
     public function lihatpemesananadmin()
     {
-        $Pemesanan = Pemesanan::all();
+        $Pemesanan = Pemesanan::orderBy('tgl_pesan', 'desc')->get();
         $terdapat = count($Pemesanan);
         return view('admin.antrian', compact('terdapat','Pemesanan'));
 

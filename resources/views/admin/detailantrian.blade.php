@@ -186,6 +186,7 @@
                                         <div><b><h3>{{ 'Rp.' . number_format($Pemesanan->total_harga , 2, ',', '.') }}</h3></b></div>
                                     </div>
                                     <form>
+                                    @if($tidakterdapatpembayaran==0 )
                                         @foreach ($Pemesanan->pembayaran as $pembayaran)
                                         @if($pembayaran->metode_pembayaran=="ONLINE")
                                         <div class="row">
@@ -331,6 +332,14 @@
                                         @endif
                                         <a type="button" href="{{ route('lihatpemesananadmin') }}" class="btn btn-danger">Kembali</a>
                                     </div>
+                                    @elseif($tidakterdapatpembayaran==1)
+                                    <div class="alert alert-danger" role="alert">
+                                        <h6><b>Maaf</b>, Pelanggan belum melakukan aktifasi untuk pemesanan jenis kamar ini.</h6>
+                                      </div>
+                                      <div class="card-footer text-right">
+                                        <a type="button" href="{{ route('lihatpemesananadmin') }}" class="btn btn-danger">Kembali</a>
+                                    </div>
+                                    @endif
                                 </form>
                             </div>
                         </div>
