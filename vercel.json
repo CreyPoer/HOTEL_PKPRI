@@ -25,10 +25,11 @@
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
-        "DB_CONNECTION": "mysql",
-        "DB_HOST": "4gg.h.filess.io",
-        "DB_PORT": "3306",
-        "DB_DATABASE": "db2024_stormtorn",
-        "DB_USERNAME": "db2024_stormtorn"
+        "DB_CONNECTION"="mysql",
+        "DB_HOST"="aj5.h.filess.io",
+        "DB_PORT"="3306",
+        "DB_DATABASE"="dbhotelpkpri2024_happilyyes",
+        "DB_USERNAME"="dbhotelpkpri2024_happilyyes",
+        "DB_PASSWORD"="c925e49d0bb800838cbc7fc48eea8998411a8e88"
     }
 }
