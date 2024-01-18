@@ -1,0 +1,185 @@
+body{
+  width: 100%;
+  background-color: black;
+}
+.navigasi{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr ; 
+  background-color: tan;
+  position: fixed; 
+  opacity: 0.7;
+  z-index:999;
+}
+.navigasi-dua{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+  padding-left: 3rem;
+  column-gap: 2rem;
+  width:40rem;
+  margin-left: -10rem;
+}
+
+.navigasi1, .navigasi2, .navigasi3 ,.navigasi4, .navigasi5, .navigasi6 , .navigasi7 {  
+  margin-left: -1rem;
+  padding: 1.5rem;
+  font-weight: bold;  
+  color: black;
+}   
+a{
+  text-decoration: none;
+}
+.link-dark:hover{
+  color:white;
+}
+.navigasi1 {
+  width:25rem;
+  padding-left: 2rem;;
+}
+.navigasi6,.navigasi7 {
+  margin-top: -0.4rem;
+}
+.hidden-div {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 2px solid black;
+  padding: 10px;
+  z-index: 999;
+}
+.hidden-div button{
+  background-color: tan;
+}
+.btn-outline-dark {
+border-width: 2px; /* Ubah nilai border-width sesuai dengan kebutuhan */
+}
+
+.kataopening{
+  margin-top: -20rem;
+  color: white;
+  align-items: center;
+  text-align: center;
+}
+.kataopening .btn{
+  border: 2px solid white;
+  color: white;
+  
+}
+.kataopening .btn:hover{
+  background-color: tan;
+  border: 2px solid black;
+  color: black;
+  
+}
+.carikamar{
+  margin-top: 5rem;   
+  margin-left: 11.5rem;   
+  position: absolute; 
+  background-color:tan;
+  padding: 1rem;
+  border:2px solid white;
+  border-radius: 10px;
+}
+.jeniskamar{
+  margin-top: 15rem;
+  padding: 2rem;
+}
+.juduljeniskamar{
+  text-align: center;
+  color:tan;
+}
+.card{
+  width: 25rem; 
+}
+.col-auto{
+  background-color: tan;
+}
+.card-body{
+  text-align: center;
+}
+.tentangwismahotel{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  padding: 2rem;
+}
+.card-text{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width:20rem;margin-left:1.5rem;
+}
+.kontententangwismahotel{
+  padding-left: 1rem;
+  padding-top: 1.5rem;
+  color: tan;
+  text-shadow: 1px 1px 2px white; 
+}
+.contact{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  padding: 1rem;
+}
+.contactcontent{
+  padding: 1rem;
+  display:grid;
+  grid-template-rows: 1fr 1fr;
+  height: 28rem;
+}
+.contactcontent img{
+  width: 40rem;
+  height: 20rem;
+  border: 2px solid tan;
+  border-radius:20px;
+}
+.contactformulir{
+  border-radius: 30px;
+  width: 100%;
+  background-color: tan;
+  padding: 1rem;
+  padding-top: 2rem;
+}
+.masukan{
+  color: tan;
+  align-items: center;
+  text-align: center;
+  margin-top: 3rem;
+}
+.icon:hover{
+  background-color: tan;
+}
+.bi-whatsapp:hover,.bi-instagram:hover,.bi-telephone:hover{
+  fill:black;
+}
+.footer{
+  display: grid;
+  padding: 1.5rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  color:black;
+  background-color: tan;
+  text-align: center;
+}
+.foologo{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+.footmedia{  
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  padding-top: 1rem;
+}
+.macammedia{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  margin-top: -5rem;
+  height:2rem;
+
+}
+.footalamat{
+  padding: 1rem;
+  padding-top:2rem;
+}
+.alamatfoo{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

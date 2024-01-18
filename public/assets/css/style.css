@@ -1,0 +1,198 @@
+:root {
+    /* --bs-body-font-family :  'Poppins', sans-serif; */
+    --fwbold : 700;
+    --fwregular : 400;
+    --fwmedium : 500;
+    --fwsemibold : 600;
+    --green : #148F00;
+    --lightgreen : #91E783;
+    --black: #1C211C;
+    --grey : #8C8C8C;
+    --white : #FFFFFF;
+    --white2 : #FAFBFC;
+
+
+}
+
+#map {
+    height: 400px; /* Adjust the height as needed */
+    width: 100%;
+ }
+
+* {
+    margin: 0;
+    padding: 0;
+    /* font-family: 'Poppins', sans-serif; */
+
+}
+body{
+    font-family: 'Poppins', sans-serif !important;
+    color: var(--black);
+    background-color: var(--white2);
+}
+
+/* select option{
+    font-family: 'Poppins', sans-serif !important;
+    font: 30px;
+} */
+.indented-paragraph {
+    text-indent: 30px; /* Menjorokkan teks ke kiri sebanyak 30px */
+    text-align: justify; /* Menggunakan rata kanan-kiri (justify) pada teks */
+}
+.caro{
+    width: fit-content;
+}
+
+.navbar-brand img{
+    margin-right: 10px;
+}
+
+.navbar-nav .nav-item .btn-info{
+    padding: 12px 24px;
+    font-size: 14px;
+    background: var(--green);
+    border-radius: 0;
+    color: var(--white);
+    border: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.navbar-nav .nav-item .btn-info:hover{
+    background: var(--lightgreen);
+    color: var(--green);
+}
+
+.navbar-nav .nav-item .btn-secondary:hover{
+    background: var(--green);
+    color: var(--white);
+}
+
+.navbar-nav .nav-item .btn-secondary{
+    padding: 12px 24px;
+    font-size: 14px;
+    background: var(--lightgreen);
+    border-radius: 0;
+    color: var(--green);
+    border: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+.btn-info{
+    background: var(--green);
+    border-radius: 0;
+    color: var(--white);
+    border: 0;
+}
+.btn-info:hover{
+    background: var(--lightgreen);
+    color: var(--green);
+}
+
+.bg-body-tertiary{
+    background-color: var(--black) !important;
+}
+
+.navbar-brand{
+    color: var(--white);
+}
+.navbar-nav .nav-item .nav-link{
+    color:var(--white);
+}
+
+.navbar-nav .nav-item a:hover{
+    /* color: #cecece; */
+    text-shadow: 1px 1px 3px var(--white);
+    font-weight: var(--fwsemibold) !important;
+    transition: all 0.3 ease;
+}
+
+.navbar-toggler{
+    color: rgb(255 255 255 / 30%);
+    background-color: rgb(255 255 255 / 60%);
+}
+
+#togglePassword {
+    cursor: pointer;
+    color:#ffffff;
+}
+#togglePassword2 {
+    cursor: pointer;
+    color:#ffffff;
+}
+
+
+.container-fluid{
+    padding: 0;
+}
+
+/*  */
+
+.acuan-bg{
+    width: 99vw;
+    height:99vh;
+
+}
+.banner{
+    background-image: url('/images/bahan1.jpeg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 620px;
+}
+
+footer{
+    width: auto;
+    height: 310px;
+    background-color: var(--black);
+    box-sizing: border-box;
+    padding: 40px 88px;
+    margin-top: 80px;
+}
+
+.card-efek:hover{
+    transform: scale(1.01);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+
+@media screen and (max-width:1000px) {
+    footer{
+        height: auto;
+        background-color: var(--black);
+    }
+    footer .w-25{
+        width: 50% !important;
+    }
+    .navbar-nav .nav-item .btn-info{
+        padding: 12px 27px;
+        font-size: 14px;
+        background: var(--green);
+        border-radius: 0;
+        color: var(--white);
+        border: 0;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .navbar-nav .nav-item .btn-secondary{
+        padding: 12px 24px;
+        font-size: 14px;
+        background: var(--lightgreen);
+        border-radius: 0;
+        color: var(--green);
+        border: 0;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+@media screen and (max-width:770px) {
+    footer .w-25{
+        width: 70% !important;
+    }
+}
+@media screen and (max-width:500px) {
+    footer .w-25{
+        width: 100% !important;
+    }
+}
