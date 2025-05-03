@@ -111,7 +111,7 @@
                             <h3 class="text-center text-black">Jenis Kamar Pilihan Anda</h3>
                             @foreach($dtKamar as $data)
                             <div class="card shadow-lg">
-                                <img src="{{ asset('images/bahan1.jpeg')}}" class="card-img-top" alt="...">
+                                <img src="{{ asset('gambar-kamar/'.$data['kamar']->image)}}" class="card-img-top" alt=""  width="10rem" height="250rem">
                                 <div class="card-body" style="background-color: #ededed">
                                     <h3 class="card-title text-center" style="background-color: black;color:white;">{{ $data['kamar']->jenis_kamar }}</h3>
                                     <div class="card-text d-flex flex-row justify-content-evenly">
@@ -150,35 +150,26 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    @if( $data['rata_rating']==5)
-                                        @include('layouts.star.ratings-5')
-
-                                    @elseif($data['rata_rating']==4.5)
-                                        @include('layouts.star.ratings-45')
-
-                                    @elseif($data['rata_rating']==4)
-                                        @include('layouts.star.ratings-4')
-
-                                    @elseif($data['rata_rating']==3.5)
-                                        @include('layouts.star.ratings-35')
-
-                                    @elseif($data['rata_rating']==3)
-                                        @include('layouts.star.ratings-3')
-
-                                    @elseif($data['rata_rating']==2.5)
-                                        @include('layouts.star.ratings-25')
-
-                                    @elseif($data['rata_rating']==2.0)
-                                        @include('layouts.star.ratings-2')
-
-                                    @elseif($data['rata_rating']==1.5)
-                                        @include('layouts.star.ratings-15')
-
-                                    @elseif($data['rata_rating']==1.0)
-                                        @include('layouts.star.ratings-1')
-
-                                    @elseif($data['rata_rating']==0.5)
-                                        @include('layouts.star.ratings-5')
+                                    @if( $data['rata_rating']==5 || $data['rata_rating']==null)
+                                    @include('layouts.star.ratings-5')
+                                @elseif($data['rata_rating']>=4.5 && $data['rata_rating']<5)
+                                    @include('layouts.star.ratings-45')
+                                @elseif($data['rata_rating']>=4 && $data['rata_rating']<4.5)
+                                    @include('layouts.star.ratings-4')
+                                @elseif($data['rata_rating']>=3.5 && $data['rata_rating']<4)
+                                    @include('layouts.star.ratings-35')
+                                @elseif($data['rata_rating']>=3 && $data['rata_rating']<3.5)
+                                    @include('layouts.star.ratings-3')
+                                @elseif($data['rata_rating']>=2.5 && $data['rata_rating']<3)
+                                    @include('layouts.star.ratings-25')
+                                @elseif($data['rata_rating']>=2 && $data['rata_rating']<2.5)
+                                    @include('layouts.star.ratings-2')
+                                @elseif($data['rata_rating']>=1.5 && $data['rata_rating']<2)
+                                    @include('layouts.star.ratings-15')
+                                @elseif($data['rata_rating']>=1 && $data['rata_rating']<1.5)
+                                    @include('layouts.star.ratings-1')
+                                @elseif($data['rata_rating']>=0 && $data['rata_rating']<1)
+                                    @include('layouts.star.ratings-05')
                                     @endif
                                     @endforeach
                                 </div>

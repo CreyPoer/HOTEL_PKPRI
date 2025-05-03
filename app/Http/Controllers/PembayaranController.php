@@ -66,8 +66,12 @@ class PembayaranController extends Controller
             $bukti_transfer=$request->file('bukti_transfer');
             $bayar = $request->input('bayar');
             if($bayar=="FULL"){
+                // $filename = $bayar.$id.'.'.$bukti_transfer->getClientOriginalExtension();
+                // $path='image-buktitransfer/'.$filename;
+                // Storage::disk('public')->put($path,file_get_contents($bukti_transfer));
+
                 $filename = $bayar.$id.'.'.$bukti_transfer->getClientOriginalExtension();
-                $path='image-buktitransfer/'.$filename;
+                $bukti_transfer->move(public_path('gambar-bukti_transfer'), $filename);
                 Pembayaran::create([
                     'pelanggan_id' => $pelanggan_id,
                     'pemesanan_id' => $id,
@@ -83,15 +87,17 @@ class PembayaranController extends Controller
                 ]);
 
                 $data['status_pembayaran'] = 'Menunggu Konfirmasi';
-                Storage::disk('public')->put($path,file_get_contents($bukti_transfer));
 
                 Pemesanan::whereId($id)->update($data);
 
                 return redirect('/pesananpelanggan/'. $pelanggan_id)->with('berhasilbayaronline', 'Terima kasih telah mengkonfirmasi pembayaran anda, Selanjutnya akan kami konfirmasi pembayaran anda');
 
             }elseif($bayar=="DP"){
+                // $filename = $bayar.$id.'.'.$bukti_transfer->getClientOriginalExtension();
+                // $path='image-buktitransfer/'.$filename;
+                // Storage::disk('public')->put($path,file_get_contents($bukti_transfer));
                 $filename = $bayar.$id.'.'.$bukti_transfer->getClientOriginalExtension();
-                $path='image-buktitransfer/'.$filename;
+                $bukti_transfer->move(public_path('gambar-bukti_transfer'), $filename);
                 $jumlah_dp = ($jumlah_pembayaran * 50) / 100;
                 Pembayaran::create([
                     'pelanggan_id' => $pelanggan_id,
@@ -106,7 +112,6 @@ class PembayaranController extends Controller
                     'atas_nama' => $atas_nama,
                     'bukti_transfer' => $filename,
                 ]);
-                Storage::disk('public')->put($path,file_get_contents($bukti_transfer));
                 $data['status_pembayaran'] = 'Menunggu Konfirmasi';
                 Pemesanan::whereId($id)->update($data);
                 return redirect('/pesananpelanggan/'. $pelanggan_id)->with('berhasilbayaronline', 'Terima kasih telah mengkonfirmasi pembayaran anda, Selanjutnya akan kami konfirmasi pembayaran anda');
@@ -180,6 +185,15 @@ class PembayaranController extends Controller
 
         $terdapat = count($pemesananDanPembayaran);
         return view('admin.konfirmasipembayaranoffline', compact('terdapat','pemesananDanPembayaran'))->with('berhasilhapusvalidasi','pembayaran offline pelanggan telah berhasil dihapus');
+    }
+
+    public function validasihapuspesananadmin(Request $request,$id){
+        $pemesanan = Pemesanan::findOrFail($id);
+        $pemesanan->pembayaran()->delete();
+        $pemesanan->delete();
+        $Pemesanan = Pemesanan::orderBy('tgl_pesan', 'desc')->get();
+        $terdapat = count($Pemesanan);
+        return view('admin.antrian', compact('terdapat','Pemesanan'))->with('berhasildihapus','Data pemesanan kamar hotel pelanggan telah berhasil di hapus ');
     }
     public function validasihapuspemesanan(Request $request){
         $id=$request->id_pemesanan;

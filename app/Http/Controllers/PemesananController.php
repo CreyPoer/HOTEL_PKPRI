@@ -97,6 +97,7 @@ class PemesananController extends Controller
     public function lihatsemua(Request $request, $id){
         $Pemesanan = Pemesanan::where('id',$id)->first();
         $id_pemesanan = $Pemesanan->id;
+        $tgl_pesan = $Pemesanan->tgl_pesan;
         $status_pesan = $Pemesanan->status_pesan;
         $status_checkin = $Pemesanan->status_checkin;
         $status_pembayaran = $Pemesanan->status_pembayaran;
@@ -109,7 +110,7 @@ class PemesananController extends Controller
             return view('admin.detailantrian', compact('tidakterdapatpembayaran','Pemesanan','metode_pembayaran','status_pesan','status_checkin','status_pembayaran','status_ulasan'));
         }else{
             $tidakterdapatpembayaran=1;
-            return view('admin.detailantrian', compact('tidakterdapatpembayaran','Pemesanan','status_pesan','status_checkin','status_pembayaran','status_ulasan'));
+            return view('admin.detailantrian', compact('tgl_pesan','id_pemesanan','tidakterdapatpembayaran','Pemesanan','status_pesan','status_checkin','status_pembayaran','status_ulasan'));
 
         }
     }

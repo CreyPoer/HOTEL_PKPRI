@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-
 </head>
 <body>
     <!-- Navbar -->
@@ -81,7 +80,7 @@
             @foreach($dataKamar as $data)
                 <div class="col-lg-4 my-2 pt-2 my-sm-0">
                     <div class="card p-3">
-                        <img src="{{ asset('storage/image-kamar/'.$data['kamar']->image)}}" class="card-img-top" alt="..." width="10rem" height="160rem">
+                        <img src="{{ asset('gambar-kamar/'.$data['kamar']->image)}}" class="card-img-top" alt="..." width="10rem" height="160rem">
                         <div class="card-body d-flex flex-column">
                             <h2 class="card-title text-center">{{ $data['kamar']->jenis_kamar }}</h2>
                             <div class="card-text d-flex flex-row justify-content-evenly">
@@ -89,28 +88,32 @@
                                 <p class="fw-semibold mt-2">/ malam</p>
                             </div>
                         </div>
-                        @if( $data['rata_rating']==5)
+                        @if( $data['rata_rating']==5 || $data['rata_rating']==null)
                             @include('layouts.rating-5')
-                        @elseif($data['rata_rating']==4.5)
+                        @elseif($data['rata_rating']>=4.5 && $data['rata_rating']<5)
                             @include('layouts.rating-45')
-                        @elseif($data['rata_rating']==4)
+                        @elseif($data['rata_rating']>=4 && $data['rata_rating']<4.5)
                             @include('layouts.rating-4')
-                        @elseif($data['rata_rating']==3.5)
+                        @elseif($data['rata_rating']>=3.5 && $data['rata_rating']<4)
                             @include('layouts.rating-35')
-                        @elseif($data['rata_rating']==3)
+                        @elseif($data['rata_rating']>=3 && $data['rata_rating']<3.5)
                             @include('layouts.rating-3')
-                        @elseif($data['rata_rating']==2.5)
+                        @elseif($data['rata_rating']>=2.5 && $data['rata_rating']<3)
                             @include('layouts.rating-25')
-                        @elseif($data['rata_rating']==2.0)
+                        @elseif($data['rata_rating']>=2 && $data['rata_rating']<2.5)
                             @include('layouts.rating-2')
-                        @elseif($data['rata_rating']==1.5)
+                        @elseif($data['rata_rating']>=1.5 && $data['rata_rating']<2)
                             @include('layouts.rating-15')
-                        @elseif($data['rata_rating']==1.0)
+                        @elseif($data['rata_rating']>=1 && $data['rata_rating']<1.5)
                             @include('layouts.rating-1')
-                        @elseif($data['rata_rating']==0.5)
-                            @include('layouts.rating-1')
+                        @elseif($data['rata_rating']>=0 && $data['rata_rating']<1)
+                            @include('layouts.rating-05')
+                        {{-- @else
+                        <div class="text-center">
+                            <h6>Tersedia {{ $data['kamar']->ketersediaan }} kamar</h6>
+                        </div> --}}
                         @endif
-                            <a href="/carikamarhome/{{ $data['kamar']->jenis_kamar}}" class="btn btn-dark mt-3" style="width: 100%;">Lihat Detail Penawaran </a>
+                            <a href="/resetketersediaan" class="btn btn-dark mt-3" style="width: 100%;">Lihat Detail Penawaran </a>
                     </div>
                 </div>
             @endforeach

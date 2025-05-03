@@ -80,7 +80,7 @@
             @foreach($dataKamar as $data)
                 <div class="col-lg-4 my-2 pt-2 my-sm-0">
                     <div class="card p-3">
-                        <img src="{{ asset('storage/image-kamar/'.$data['kamar']->image)}}" class="card-img-top" alt="..." width="100" height="180">
+                        <img src="{{ asset('gambar-kamar/'.$data['kamar']->image)}}" class="card-img-top" alt="..." width="100" height="180">
                         <div class="card-body d-flex flex-column">
                             <h2 class="card-title text-center">{{ $data['kamar']->jenis_kamar }}</h2>
                             <div class="card-text d-flex flex-row justify-content-evenly">
@@ -88,7 +88,7 @@
                                 <p class="fw-semibold mt-2">/ malam</p>
                             </div>
                         </div>
-                        @if( $data['rata_rating']==5)
+                        @if( $data['rata_rating']==5 || $data['rata_rating']==null)
                             <div class="d-flex justify-content-center">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -116,7 +116,7 @@
                                     </svg>
                                 </div>
                             </div>
-                        @elseif($data['rata_rating']==4.5)
+                            @elseif($data['rata_rating']>=4.5 && $data['rata_rating']<5)
                             <div class="d-flex justify-content-center">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -144,7 +144,7 @@
                                     </svg>
                                 </div>
                             </div>
-                        @elseif($data['rata_rating']==4)
+                            @elseif($data['rata_rating']>=4 && $data['rata_rating']<4.5)
                             <div class="d-flex justify-content-center">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -172,7 +172,7 @@
                                     </svg>
                                 </div>
                             </div>
-                        @elseif($data['rata_rating']==3.5)
+                            @elseif($data['rata_rating']>=3.5 && $data['rata_rating']<4)
                             <div class="d-flex justify-content-center">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -200,7 +200,7 @@
                                     </svg>
                                 </div>
                             </div>
-                        @elseif($data['rata_rating']==3)
+                            @elseif($data['rata_rating']>=3 && $data['rata_rating']<3.5)
                             <div class="d-flex justify-content-center">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -228,7 +228,7 @@
                                     </svg>
                                 </div>
                             </div>
-                        @elseif($data['rata_rating']==2.5)
+                            @elseif($data['rata_rating']>=2.5 && $data['rata_rating']<3)
                             <div class="d-flex justify-content-center">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -256,7 +256,7 @@
                                     </svg>
                                 </div>
                             </div>
-                        @elseif($data['rata_rating']==2.0)
+                            @elseif($data['rata_rating']>=2 && $data['rata_rating']<2.5)
                             <div class="d-flex justify-content-center">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -284,7 +284,7 @@
                                     </svg>
                                 </div>
                             </div>
-                        @elseif($data['rata_rating']==1.5)
+                            @elseif($data['rata_rating']>=1.5 && $data['rata_rating']<2)
                             <div class="d-flex justify-content-center">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -312,7 +312,7 @@
                                     </svg>
                                 </div>
                             </div>
-                        @elseif($data['rata_rating']==1.0)
+                            @elseif($data['rata_rating']>=1 && $data['rata_rating']<1.5)
                             <div class="d-flex justify-content-center">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -340,7 +340,7 @@
                                     </svg>
                                 </div>
                             </div>
-                        @elseif($data['rata_rating']==0.5)
+                            @elseif($data['rata_rating']>=0 && $data['rata_rating']<1)
                             <div class="d-flex justify-content-center">
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-half" viewBox="0 0 16 16">
@@ -367,6 +367,10 @@
                                         <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
                                     </svg>
                                 </div>
+                            </div>
+                            @else
+                            <div class="text-center">
+                                <h6>Tersedia {{ $data['kamar']->ketersediaan }} kamar</h6>
                             </div>
                         @endif
                             <a href="/lihatkamar/{{ $data['kamar']->jenis_kamar}}/{{ auth()->user()->id }}" class="btn btn-dark mt-3" style="width: 100%;">Lihat Detail Penawaran </a>

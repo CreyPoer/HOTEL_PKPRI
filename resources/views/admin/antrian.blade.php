@@ -41,17 +41,23 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Antrian</h1>
+                        <h1>Reservasi</h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
         </section>
 
         <!-- Main content -->
+        @if (session()->has('berhasildihapus'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('berhasildihapus') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                <h3 class="card-title">Antrian Reservasi</h3>
+                <h3 class="card-title">Rekap Reservasi Pelanggan</h3>
                 </div>
                 <div class="card-body p-2">
                     @if ($terdapat>0)

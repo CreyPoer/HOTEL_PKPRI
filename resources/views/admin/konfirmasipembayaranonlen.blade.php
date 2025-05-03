@@ -236,12 +236,11 @@
                                     </p>
                                     <div class="collapse" id="collapseExample">
                                         <div class="card card-body">
-                                            <img src="{{ asset('storage/image-buktitransfer/'.$pembayaran->bukti_transfer)}}" alt="">
+                                            <img src="{{ asset('gambar-bukti_transfer/'.$pembayaran->bukti_transfer)}}" alt="">
                                         </div>
                                     </div>
                                 </div>
                                     @endif
-
                                 @endforeach
                             </div>
                             <div class="card-footer text-right">
@@ -260,7 +259,7 @@
                             <div class="row">
                                 <div class="card col-auto">
                                     <div class="zoom-effect">
-                                        <img src="{{ asset('images/bahan1.jpeg')}}" class="card-img-top" alt="...">
+                                        <img src="{{ asset('gambar-kamar/'.$pemesananDanPembayaran->kamar->image)}}" alt="" style="width: 30rem;height:15rem;">
                                     </div>
                                     <div class="card-body bg-tan text-center   ">
                                         <h3 class="card-title text-center" style="color:black;background:#ededed;width:100%;"><b>{{ $pemesananDanPembayaran->kamar['jenis_kamar'] }}</b></h3>

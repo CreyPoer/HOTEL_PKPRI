@@ -67,7 +67,7 @@
                     <h3 class="card-title">Data Daftar Kamar</h3>
                     <div class="card-tools">
                         <div class="col-12">
-                            <a type="button" href="/adminlihatkamar/{{ 1 }}"  class="btn btn-success float-right">+ Tambah Kamar</a>
+                            <a type="button" href="/kamar/{{ 1 }}"  class="btn btn-success float-right">+ Tambah Kamar</a>
                         </div>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                                 {{ $item['kamar']->id }}
                             </td>
                             <td>
-                                <img src="{{ asset('storage/image-kamar/'.$item['kamar']->image)}}" alt="" style="width: 8rem;height:5rem;">
+                                <img src="{{ asset('gambar-kamar/'.$item['kamar']->image)}}" alt="" style="width: 8rem;height:5rem;">
                             </td>
                             <td>
                                 <a>
@@ -142,12 +142,12 @@
                                     </i>
                                     Edit
                                 </a>
-                                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#AdminHapusKamar" >
+                                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#AdminHapusKamar_{{ $item['kamar']->id }}" >
                                     <i class="fas fa-trash">
                                     </i>
                                     Hapus
                                 </a>
-                                <div class="modal fade" id="AdminHapusKamar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal fade" id="AdminHapusKamar_{{ $item['kamar']->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -284,8 +284,16 @@
                                 @enderror
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="exampleGambarKamar" class="form-label">Gambar Kamar</label>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="kategori_kamar" class="form-label">Kategori Kamar</label>
+                                        <input type="text" class="form-control"  aria-label="kategori_kamar" name="kategori_kamar" placeholder="EKONOMI">
+                                        @error('kategori_kamar')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="exampleGambarKamar" class="form-label">Gambar Kamar</label>
                                     <div class="input-group mb-3">
                                         <input type="file" name="image" class="form-control" id="inputGroupFile02">
                                         <label class="input-group-text" for="inputGroupFile02">Upload</label>
@@ -293,6 +301,7 @@
                                     @error('image')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
+                                    </div>
                                     </div>
                         </div>
                         <div class="card-footer text-right">
@@ -426,7 +435,7 @@
                                 <div class="mb-3 pt-2">
                                     <div class="collapse" id="collapseExample">
                                         <div class="card card-body">
-                                            <img src="{{ asset('storage/image-kamar/'.$Kamartertentu->image)}}" alt="" >
+                                            <img src="{{ asset('gambar-kamar/'.$Kamartertentu->image)}}" alt="" >
                                         </div>
                                     </div>
                                     <p>

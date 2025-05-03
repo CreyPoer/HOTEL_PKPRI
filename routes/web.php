@@ -73,6 +73,7 @@ Route::group(['middleware' => ['auth','CheckRole:Admin']],function(){
     Route::get('/konfirmasibayarofflineadmin',[PembayaranController::class,'lihatkonfirmasioffline']);
     Route::post('/validasipembayaranoffline', [PembayaranController::class, 'validasipembayaranoffline']);
     Route::post('/validasihapuspembayaranoffline', [PembayaranController::class, 'validasihapuspembayaranoffline']);
+    Route::get('/validasihapuspesananadmin/{id}', [PembayaranController::class, 'validasihapuspesananadmin']);
     Route::get('/detailpemesananantrian/{id}', [PemesananController::class, 'lihatsemua']);
     Route::post('/validasipembayaranfulldpofflinecheckin', [PembayaranController::class, 'validasipembayaranfulldpofflinecheckin']);
     Route::get('/laporanadmin',[PemesananController::class,'laporanadmin'])->name('laporanadmin');

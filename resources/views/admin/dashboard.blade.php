@@ -247,7 +247,7 @@
                                 <ul class="users-list clearfix">
                                     @foreach ($users as $item)
                                 <li>
-                                    <img src="{{ asset('assets/img/upload/'.$item->gambar) }}" alt="User Image" width="60px" height="60px">
+                                    <img src="{{ asset('storage/image-pelanggan/'.$item->image) }}" alt="User Image" width="60px" height="60px">
                                     <!-- <i class="fas fa-user"></i> -->
                                     <a class="users-list-name" href="#">{{ $item->nama }}</a>
                                 </li>

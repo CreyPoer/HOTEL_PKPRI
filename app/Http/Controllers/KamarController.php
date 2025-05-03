@@ -242,6 +242,7 @@ class KamarController extends Controller
 
             $dtKamar[] = [
                 'kamar' => $kamar,
+                'image' => $kamar->image,
                 'rata_rating' => $rataRating,
             ];
 
@@ -373,6 +374,7 @@ class KamarController extends Controller
                     'jenis_kamar' => $kamar->jenis_kamar,
                     'ketersediaan' => $kamar->ketersediaan - $jumlahPemesanan,
                     'harga_permalam' => $kamar->harga_permalam,
+                    'image' => $kamar->image,
                 ];
 
                 $roomAvailability[] = $kamarData;
@@ -577,6 +579,7 @@ class KamarController extends Controller
 
         $validator = Validator::make($request->all(),[
             'jenis_kamar' => 'required',
+            'kategori_kamar' => 'required',
             'harga_permalam'   => 'required',
             'kapasitas' => 'required',
             'bed' => 'required',
@@ -592,11 +595,16 @@ class KamarController extends Controller
 
         $image=$request->file('image');
         $filename = $request->jenis_kamar.'.'.$image->getClientOriginalExtension();
-        $path='image-kamar/'.$filename;
+        $image->move(public_path('gambar-kamar'), $filename);
 
-        Storage::disk('public')->put($path,file_get_contents($image));
+        // $image=$request->file('image');
+        // $filename = $request->jenis_kamar.'.'.$image->getClientOriginalExtension();
+        // $path='image-kamar/'.$filename;
+
+        // Storage::disk('public')->put($path,file_get_contents($image));
 
         $data['jenis_kamar'] = $request->jenis_kamar;
+        $data['kategori_kamar'] = $request->kategori_kamar;
         $data['harga_permalam'] = $request->harga_permalam;
         $data['kapasitas'] = $request->kapasitas;
         $data['bed'] = $request->bed;
@@ -677,17 +685,24 @@ class KamarController extends Controller
             $filename =  $ubah->image;
             if($filename!=null){
              // $filename = $request->jenis_kamar.$file->getClientOriginalExtension();
-                $path='image-kamar/'.$filename;
-                $oldImage = public_path('image-kamar') . '/' . $filename;
-                if (File::exists($oldImage)) {
-                    File::delete($oldImage); // Menghapus file lama
-                }
-                Storage::disk('public')->put($path,file_get_contents($file));
+                // $path='image-kamar/'.$filename;
+                // $oldImage = public_path('image-kamar') . '/' . $filename;
+                // if (File::exists($oldImage)) {
+                //     File::delete($oldImage); // Menghapus file lama
+                // }
+                // Storage::disk('public')->put($path,file_get_contents($file));
+
+                unlink(public_path('gambar-kamar/' . $filename));
+                $filename = $request->jenis_kamar.'.'.$file->getClientOriginalExtension();
+                $file->move(public_path('gambar-kamar'), $filename);
 
             }else{
+                // $filename = $request->jenis_kamar.'.'.$file->getClientOriginalExtension();
+                // $path='image-kamar/'.$filename;
+                // Storage::disk('public')->put($path,file_get_contents($file));
+
                 $filename = $request->jenis_kamar.'.'.$file->getClientOriginalExtension();
-                $path='image-kamar/'.$filename;
-                Storage::disk('public')->put($path,file_get_contents($file));
+                $file->move(public_path('gambar-kamar'), $filename);
             }
             // Update kolom 'image' dengan nama file yang baru di database
 
@@ -737,31 +752,41 @@ class KamarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kamar $kamar,$id)
+    public function destroy(Kamar $kamar, $id)
     {
-         // Temukan data kamar yang akan dihapus
         try {
+            // Temukan data kamar yang akan dihapus
             $kamar = Kamar::findOrFail($id);
+
+            // Hapus ketergantungan data
             $kamar->pemesanan()->delete();
             $kamar->testimoni()->delete();
+
+            // Hapus gambar dari storage jika ada
+            if ($kamar->image) {
+                unlink(public_path('gambar-kamar/' . $kamar->image));
+                // $filePath = 'public/image-kamar/' . $kamar->image;
+
+                // // Pastikan file ada sebelum dihapus
+                // if (Storage::exists($filePath)) {
+                //     Storage::delete($filePath);
+                // }
+            }
+
+            // Hapus data kamar
             $kamar->delete();
+            $status=0;
+
+            return redirect('/kamar/'. $status)->with('successHapus', 'Data kamar berhasil dihapus dari database');
         } catch (\Illuminate\Database\QueryException $e) {
             if ($e->errorInfo[1] === 1451) {
                 // Tampilkan pesan kepada pengguna bahwa ada ketergantungan data
                 return redirect()->back()->with('errortidakdapathapus', 'Tidak dapat menghapus karena data jenis kamar yang akan dihapus ini telah terkait dengan tabel pembayaran melalui tabel pemesanan pelanggan.');
-            }else{
-                $kamar = Kamar::findOrFail($id);
-                if ($kamar->image) {
-                    $filePath = 'public/image-kamar/' . $kamar->image;
-                    if (Storage::exists($filePath)) {
-                        Storage::delete($filePath);
-                    }
-                }
+            } else {
+                // Tangani kesalahan lainnya
+                return redirect()->back()->with('errorHapus', 'Terjadi kesalahan saat menghapus data kamar.');
             }
         }
-         $status=0;
-         return redirect('/kamar/'. $status)->with('succesHapus', 'Data kamar berhasil dihapus dari database');
+    }
 
-
-     }
 }

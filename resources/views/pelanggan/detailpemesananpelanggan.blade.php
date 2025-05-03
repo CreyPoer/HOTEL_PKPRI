@@ -44,9 +44,9 @@
             <div class="row">
                 <div class="col-md-6 row g-2">
                     <div class="card mt-3 px-0" style="background-color: #343a40;">
-                        <img src="{{ asset('images/bahan1.jpeg')}}" class="card-img-top" alt="...">
+                        <img src="{{ asset('gambar-kamar/'.$PesananAnda->kamar['image'])}}" class="card-img-top" alt=""  width="10rem" height="300rem">
                         <div class="card-body">
-                            <h3 class="card-title bg-black text-light text-center">{{ $PesananAnda->kamar['jenis_kamar'] }}</h3>
+                            <h3 class="card-title bg-light text-black text-center">{{ $PesananAnda->kamar['jenis_kamar'] }}</h3>
                             <div class="card-text text-light text-center">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -81,7 +81,7 @@
                                             Lama Menginap
                                         </div>
                                         <div class="mt-1">
-                                            {{ $PesananAnda->lama_inap }}
+                                            {{ $PesananAnda->lama_inap }} Hari
                                         </div>
                                     </div>
                                 </div>
@@ -170,26 +170,26 @@
                                 </div>
                             </div>
                             <hr>
-                            @if($rataRating==5)
-                                @include('layouts.bintang.ratings-5')
-                            @elseif($rataRating==4.5)
-                                @include('layouts.bintang.ratings-45')
-                            @elseif($rataRating==4)
-                                @include('layouts.bintang.ratings-4')
-                            @elseif($rataRating==3.5)
-                                @include('layouts.bintang.ratings-35')
-                            @elseif($rataRating==3)
-                                @include('layouts.bintang.ratings-3')
-                            @elseif($rataRating==2.5)
-                                @include('layouts.bintang.ratings-25')
-                            @elseif($rataRating==2.0)
-                                @include('layouts.bintang.ratings-2')
-                            @elseif($rataRating==1.5)
-                                @include('layouts.bintang.ratings-15')
-                            @elseif($rataRating==1.0)
-                                @include('layouts.bintang.ratings-1')
-                            @elseif($rataRating==0.5)
-                                @include('layouts.bintang.ratings-1')
+                            @if( $rataRating==5 || $rataRating==null)
+                            @include('layouts.bintang.ratings-5')
+                        @elseif($rataRating>=4.5 && $rataRating<5)
+                            @include('layouts.bintang.ratings-45')
+                        @elseif($rataRating>=4 && $rataRating<4.5)
+                            @include('layouts.bintang.ratings-4')
+                        @elseif($rataRating>=3.5 && $rataRating<4)
+                            @include('layouts.bintang.ratings-35')
+                        @elseif($rataRating>=3 && $rataRating<3.5)
+                            @include('layouts.bintang.ratings-3')
+                        @elseif($rataRating>=2.5 && $rataRating<3)
+                            @include('layouts.bintang.ratings-25')
+                        @elseif($rataRating>=2 && $rataRating<2.5)
+                            @include('layouts.bintang.ratings-2')
+                        @elseif($rataRating>=1.5 && $rataRating<2)
+                            @include('layouts.bintang.ratings-15')
+                        @elseif($rataRating>=1 && $rataRating<1.5)
+                            @include('layouts.bintang.ratings-1')
+                        @elseif($rataRating>=0 && $rataRating<1)
+                            @include('layouts.bintang.ratings-05')
                             @endif
                         </div>
                         @endforeach
@@ -234,12 +234,12 @@
                                     </div>
                                 </div>
                             </a>
-                            <div class="modal fade" id="OFFLINE" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            <div class="modal fade" id="OFFLINE" tabindex="-1" aria-labelledby="examplemodaloffline"
                                 aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content bg-dark text-light" style="border-radius: 20px 20px 0px 0px;">
                                         <div class="modal-header" style="border-radius: 20px 20px 0px 0px;">
-                                            <h5 class="modal-title" id="exampleModalLabel">KONFIRMASI PEMBAYARAN</h5>
+                                            <h5 class="modal-title" id="examplemodaloffline">KONFIRMASI PEMBAYARAN</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
@@ -312,7 +312,7 @@
                                             @foreach($rekening as $rek)
                                             <div class="row">
                                                 <button class="col-md-12 pilihrek" data-bs-toggle="modal"
-                                                    data-bs-target="#{{ $rek->rek_tujuan }}">
+                                                    data-bs-target="#{{ str_replace(' ', '_', $rek->rek_tujuan) }}">
                                                     <div class="row align-items-center">
                                                         <div class="col-md-12">
                                                             <h6><b>{{ $rek->rek_tujuan }}</b></h6>
@@ -325,31 +325,31 @@
                                                         </div>
                                                     </div>
                                                 </button>
-                                                <div class="modal fade" id="{{  $rek->rek_tujuan  }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="{{ str_replace(' ', '_', $rek->rek_tujuan) }}" tabindex="-1" aria-labelledby="examplemodalonline" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content" style="background-color:#ededed;border-radius: 20px 20px 0px 0px;">
                                                         <div class="modal-header" style="border-radius: 20px 20px 0px 0px;">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Pembayaran</h5>
+                                                            <h5 class="modal-title" id="examplemodalonline">Konfirmasi Pembayaran</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body bg-dark" style="color:#ededed;">
                                                         <form action="/bayaronlinepelanggan/{{ $id_pemesanan }}" method="post" enctype="multipart/form-data">
                                                             @csrf
                                                         <div class="mb-3 row">
-                                                            <label for="staticEmail" class="col-sm-5 col-form-label">Total Yang Harus Dibayar</label>
+                                                            <label class="col-sm-5 col-form-label">Total Yang Harus Dibayar</label>
                                                             <div class="col-sm-7">
                                                                 <h5>
-                                                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": {{ 'Rp.' . number_format($PesananAnda->total_harga , 2, ',', '.') }}" style="color:#ededed;">
+                                                                    <input type="text" readonly class="form-control-plaintext"  value=": {{ 'Rp.' . number_format($PesananAnda->total_harga , 2, ',', '.') }}" style="color:#ededed;">
                                                                 </h5>
                                                                 <input type="hidden" readonly class="form-control-plaintext" id="totalHargaHidden" value="{{ $PesananAnda->total_harga }}">
-                                                            <input type="hidden" readonly class="form-control-plaintext" id="staticEmail" value="">
+                                                            <input type="hidden" readonly class="form-control-plaintext"  value="">
                                                             </div>
                                                         </div>
                                                         <div class="mb-3 row">
-                                                            <label for="staticEmail" class="col-sm-5 col-form-label">Jika DP Total bayar</label>
+                                                            <label class="col-sm-5 col-form-label">Jika DP Total bayar</label>
                                                             <div class="col-sm-7">
                                                                 <h5>
-                                                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value=": {{ 'Rp.' . number_format(($PesananAnda->total_harga*50)/100 , 2, ',', '.') }}" style="color:#ededed;">
+                                                                    <input type="text" readonly class="form-control-plaintext"  value=": {{ 'Rp.' . number_format(($PesananAnda->total_harga*50)/100 , 2, ',', '.') }}" style="color:#ededed;">
                                                                 </h5>
                                                                 <input type="hidden" readonly class="form-control-plaintext" id="totalBayarDPHidden" value="{{ ($PesananAnda->total_harga * 50) / 100 }}">
                                                             </div>
@@ -372,15 +372,6 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        {{-- <div class="mb-3 row">
-                                                            <label for="inputjumlahpembayaran" class="col-sm-5 col-form-label">Bayar Pembayaran</label>
-                                                            <div class="col-sm-7">
-                                                                <div class="input-group">
-                                                                    <span class="input-group-text">Rp</span>
-                                                                    <input type="number" name="jumlah_pembayaran" class="form-control" id="inputjumlahpembayaran" readonly>
-                                                                </div>
-                                                            </div>
-                                                        </div> --}}
                                                         <div class="mb-3 row">
                                                             <label for="inputrekasal" class="col-sm-5 col-form-label" data-bs-toggle="tooltip" data-bs-placement="left" title="Nama Bank Yang Anda Gunakan">Rekening Anda</label>
                                                             <div class="col-sm-7">
@@ -458,7 +449,7 @@
                         <h1>TERIMA KASIH </h1><br>
                         <h6>Terima kasih telah melakukan Pembayaran terkait pemesanan anda</h6><br>
                         <img src="{{ asset('video/hourglass.gif') }}" alt="GIF Image" width="320" height="400"><br>
-                        <h6>Pembayaran yang telah anda lakukan, selanjutnya akan kami validasi dan segera akan kami
+                        <h6 class="indented-paragraph">Pembayaran yang telah anda lakukan, selanjutnya akan kami validasi dan segera akan kami
                             konfirmasi bahwasannya pembayaran anda telah diterima atau tidak oleh pihak kami</h6><br>
                         <h6><b>Kami mohon kesediaan untuk menunggu proses validasi pembayaran anda </b></h6><br>
                         <a type="button" href="/pesananpelanggan/{{ $pelanggan_id }}" class="btn btn-primary"
@@ -468,11 +459,11 @@
                     @elseif($status==2)
                     <div class="alert alert-success mt-4" role="alert" style="text-align: center;">
                         <h1>SILAHKAN CHECK IN </h1><br>
-                        <h6>Pembayaran anda telah kami validasi dan konfirmasi terkait pemesanan kamar anda</h6><br>
+                        <h6 class="indented-paragraph">Pembayaran anda telah kami validasi dan konfirmasi terkait pemesanan kamar anda</h6><br>
                         <img src="{{ asset('video/verified-file.gif') }}" alt="GIF Image" width="220" height="300"><br>
-                        <h6>Pembayaran yang telah anda lakukan, telah kami terima dengan baik dan telah kami konfirmasi
+                        <h6 class="text-start">Pembayaran yang telah anda lakukan, telah kami terima dengan baik dan telah kami konfirmasi
                             terkait pembayaran anda. Selanjutnya anda dapat langsung menuju Resepisonis kami untuk melakukan
-                            Check In kamar.</h6><br>
+                            Check In kamar pada tanggal <b>{{ $checkin }}</b>.</h6><br>
                         <h6 style="text-align: start;">Adapun hal-hal yang perlu diperhatikan, saat anda ingin melakukan
                             Check In seperti berikut:</h6>
                         <ul style="text-align: start;">
@@ -663,6 +654,10 @@
 
         <!-- Footer -->
         @include('layouts.footer')
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
         {{-- <script>
             document.addEventListener("DOMContentLoaded", function() {

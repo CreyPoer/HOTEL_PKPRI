@@ -236,11 +236,12 @@ class AktorController extends Controller
         // if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
         $image=$request->file('image');
         $filename = $request->no_ktp.'.'.$image->getClientOriginalExtension();
-        $path='image-pelanggan/'.$filename;
-        $path2='image-user/'.$filename;
+        $image->move(public_path('gambar-user'), $filename);
+        // $path='image-pelanggan/'.$filename;
+        // $path2='image-user/'.$filename;
 
-        Storage::disk('public')->put($path,file_get_contents($image));
-        Storage::disk('public')->put($path2,file_get_contents($image));
+        // Storage::disk('public')->put($path,file_get_contents($image));
+        // Storage::disk('public')->put($path2,file_get_contents($image));
         $data['no_ktp'] = $request->no_ktp;
         $data['nama'] = $request->nama;
         $data['alamat'] = $request->alamat;
@@ -316,19 +317,22 @@ class AktorController extends Controller
             $file = $request->file('image');
             $filename =  $ubah->image;
             if($filename!=null){
+                unlink(public_path('gambar-user/' . $filename));
                 $filename = $request->no_ktp.'.'.$file->getClientOriginalExtension();
-                $path='image-pelanggan/'.$filename;
-                $path2='image-user/'.$filename;
-                $oldImage = public_path('image-pelanggan') . '/' . $filename;
-                if (File::exists($oldImage)) {
-                    File::delete($oldImage); // Menghapus file lama
-                }
-                $oldImage2 = public_path('image-pelanggan') . '/' . $filename;
-                if (File::exists($oldImage2)) {
-                    File::delete($oldImage2); // Menghapus file lama
-                }
-                Storage::disk('public')->put($path,file_get_contents($file));
-                Storage::disk('public')->put($path2,file_get_contents($file));
+                $file->move(public_path('gambar-user'), $filename);
+
+                // $path='image-pelanggan/'.$filename;
+                // $path2='image-user/'.$filename;
+                // $oldImage = public_path('image-pelanggan') . '/' . $filename;
+                // if (File::exists($oldImage)) {
+                //     File::delete($oldImage); // Menghapus file lama
+                // }
+                // $oldImage2 = public_path('image-pelanggan') . '/' . $filename;
+                // if (File::exists($oldImage2)) {
+                //     File::delete($oldImage2); // Menghapus file lama
+                // }
+                // Storage::disk('public')->put($path,file_get_contents($file));
+                // Storage::disk('public')->put($path2,file_get_contents($file));
 
                 $data['no_ktp'] = $request->no_ktp;
                 $data['nama'] = $request->nama;
@@ -353,10 +357,11 @@ class AktorController extends Controller
 
             }else{
                 $filenames = $request->no_ktp.'.'.$file->getClientOriginalExtension();
-                $path='image-pelanggan/'.$filenames;
-                $path2='image-user/'.$filenames;
-                Storage::disk('public')->put($path,file_get_contents($file));
-                Storage::disk('public')->put($path2,file_get_contents($file));
+                $file->move(public_path('gambar-user'), $filenames);
+                // $path='image-pelanggan/'.$filenames;
+                // $path2='image-user/'.$filenames;
+                // Storage::disk('public')->put($path,file_get_contents($file));
+                // Storage::disk('public')->put($path2,file_get_contents($file));
 
                 $data['no_ktp'] = $request->no_ktp;
                 $data['nama'] = $request->nama;

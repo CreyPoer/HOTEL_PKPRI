@@ -95,8 +95,10 @@
                     <li class="nav-item dropdown">
                         <a class="navbar-brand fw-medium dropdown-toggle d-flex align-items-center" href="#" style="font-size: 1rem" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                            <img  src="{{ asset('storage/image-user/'.auth()->user()->image)}}" alt="." width="34" height="34"
-                                class="d-inline-block align-text-top bg-white rounded-circle">
+                            <img src="{{ asset('gambar-user/'.auth()->user()->image)}}" alt="." width="34" height="34"
+                            class="d-inline-block align-text-top bg-white rounded-circle">
+                            {{-- <img  src="{{ asset('storage/image-user/'.auth()->user()->image)}}" alt="." width="34" height="34"
+                                class="d-inline-block align-text-top bg-white rounded-circle"> --}}
                             Hai, {{ auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu">
@@ -259,7 +261,7 @@
                       </div>
                   </span>
               </div>
-              <label for="">Gambar (JPG/PNG)</label>
+              <label for="">Gambar (JPG/JPEG)</label>
               <div class="input-group mb-3">
                   <input type="file"  name="image" class="form-control" id="inputGroupFile02">
                   <label class="input-group-text" for="inputGroupFile02">Upload</label>

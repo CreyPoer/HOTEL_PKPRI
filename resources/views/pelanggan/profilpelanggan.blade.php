@@ -24,11 +24,12 @@
             <div class="row text-center pb-5">
                 <h2><b>PROFIL ANDA</b></h2><br>
             </div>
+            
             @foreach($dataPelanggan as $data)
 
             <div class="row bg-white p-5 mt-3 rounded-4 d-flex align-content-center justify-content-center" style="border: 1px solid black;">
                 <div class="rounded-circle" style="width: 150px;height:150px">
-                    <img src="{{ asset('storage/image-pelanggan/'.$data->image)}}" class="d-inline-block bg-white rounded-circle border border-4 border-dark-subtle" alt=".." width="150" height="150">
+                    <img src="{{ asset('gambar-user/'.$data->image)}}" class="d-inline-block bg-white rounded-circle border border-4 border-dark-subtle" alt=".." width="150" height="150">
                 </div>
                 <form class="pt-5" method="POST" action="/simpanprofil/{{ $data->id }}" enctype="multipart/form-data">
                     @if (session()->has('succes'))

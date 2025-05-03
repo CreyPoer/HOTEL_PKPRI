@@ -130,7 +130,7 @@
                                             <div class="modal-body">
                                                 <div class="row alert alert-danger d-flex align-items-center" role="alert">
                                                     <div class="text-start">
-                                                        <p><strong>Perlu Diingat!</strong> Jika proses Check Out Pelanggan terdapat permasalahan yang berujung penambahan sejumlah biaya pemesanan kamar. Maka tolong masukkan kisaran biaya tambahan yang diberikan oleh Pelanggan sebagai bentuk penebusan pelanggaran yang dilakukan nya selama menyewa kamar di WISMA PKP-RI Bangkalan ini.</p>
+                                                        <p><strong>Perlu Diingat!</strong> Jika proses Check Out Pelanggan terdapat permasalahan yang berujung penambahan sejumlah biaya pemesanan kamar. Maka tolong masukkan kisaran biaya tambahan yang diberikan oleh Pelanggan sebagai bentuk penebusan pelanggaran yang dilakukan nya selama menyewa kamar di HOTEL PKP-RI Bangkalan ini.</p>
                                                     </div>
                                                 </div>
 

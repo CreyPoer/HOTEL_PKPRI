@@ -48,7 +48,7 @@
 
                 <div class="row pt-4">
                     <div class="col-md-6 text-start">
-                        <h6><b>Tanggal Hari Ini : {{ $tanggalHariIni }}</b></h6>
+                        <h6><b>Tanggal Hari Ini : {{ \Carbon\Carbon::parse($tanggalHariIni)->format('d F Y') }}</b></h6>
                     </div>
                     <div class="col-md-6 text-end">
                         <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"">
@@ -64,9 +64,10 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                          Terdapat ketentuan yang perlu
+                          Terdapat ketentuan yang perlu diperhatikan
                           <ul class="list-group">
                             <li class="list-group-item bg-dark text-light">Silahkan segera aktifkan pemesanan anda dengan memilih konfirmasi pembayaran, apabila status pemesanan anda <b>Belum Aktif</b> dengan menekan tombol <a href="#" class="btn btn-warning">Aktifkan</a></li>
+                            <li class="list-group-item bg-dark text-light">Pesanan yang masih tidak aktif selama kurun waktu paling lambat 1 hari setelah melakukan pemesanan, maka pesanan tersebut akan <b>di hapus</b>(Silahkan dapat menghubungi Contact Person dibawah)</li>
                             <li class="list-group-item bg-dark text-light">Untuk mengaktifkan pemesanan anda akan di minta untuk konfirmasi pembayaran terkait pemesanan anda</li>
                             <li class="list-group-item bg-dark text-light">Konfirmasi pembayaran dapat dilakukan secara <b>offline</b> ataupun <b>online</b></li>
                             <li class="list-group-item bg-dark text-light">Jika memilih konfirmasi pembayaran secara <b>offline</b>, Anda diminta untuk melakukan konfirmasi sampai tanggal <b>tenggat konfirmasi bayar</b> Anda berakhir</li>
@@ -94,12 +95,12 @@
                         @foreach($PesananAnda as $data)
                         <tr>
                             <td>{{ $data->kamar->jenis_kamar }}</td>
-                            <td>{{ $data->tgl_pesan }}</td>
+                            <td>{{ \Carbon\Carbon::parse($data->tgl_pesan)->format('d F Y') }}</td>
                             <td>{{ $data->lama_inap }} hari</td>
                             <td>{{ $data->jumlah_kamar }}</td>
                             <td>
                                 @if ($data->tenggat_bayar != null && $data->status_pembayaran == "Menunggu Konfirmasi")
-                                {{ $data->tenggat_bayar }}
+                                {{ \Carbon\Carbon::parse($data->tenggat_bayar)->format('d F Y') }}
                                 @else
                                 -
                                 @endif

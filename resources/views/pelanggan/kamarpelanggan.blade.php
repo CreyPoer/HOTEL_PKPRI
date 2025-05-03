@@ -79,7 +79,7 @@
                                 @if($pakejeniskamar==1)
                                 <div class="col-lg-6 my-2 pb-3 my-sm-0">
                                     <div class="card p-3 card-efek">
-                                        <img src="{{ asset('images/bahan1.jpeg')}}" class="card-img-top" alt="...">
+                                        <img src="{{ asset('gambar-kamar/'.$kamar->image)}}" class="card-img-top" alt=""  width="10rem" height="180rem">
                                         <div class="card-body d-flex flex-column">
                                             <h2 class="card-title text-center fw-semibold">{{ $kamar->jenis_kamar }}</h2>
                                             <div class="card-text d-flex flex-row justify-content-evenly">
@@ -88,7 +88,13 @@
                                             </div>
                                             <h5 class="card-title text-center">Tersedia {{ $totaltersedia }} Kamar</h5>
                                         </div>
-                                        <a href="/lihatkamar/{{$kamar->jenis_kamar}}/{{ auth()->user()->id}}" class="btn btn-dark mt-3" style="width: 100%;">Pesan Sekarang </a>
+                                        @if($totaltersedia==0)
+                                        <div class="alert alert-danger" role="alert">
+                                            <h6>Silahkan Anda dapat mereset tanggal Check-In dan Check-Out Anda, dikarenakan kamar sedang tidak dalam keadaan tersedia</h6>
+                                        </div>
+                                        @else
+                                        <a href="/lihatkamar/{{ $kamar->jenis_kamar}}/{{ auth()->user()->id}}" class="btn btn-dark mt-3" style="width: 100%;">Pesan Sekarang </a>
+                                        @endif
                                     </div>
                                 </div>
                                 @elseif($pakejeniskamar==0)
@@ -96,7 +102,7 @@
                                 @if($kamar['ketersediaan']>0)
                                 <div class="col-lg-6 my-2 pb-3 my-sm-0">
                                     <div class="card p-3 card-efek">
-                                        <img src="{{ asset('images/bahan1.jpeg')}}" class="card-img-top" alt="...">
+                                        <img src="{{ asset('gambar-kamar/'.$kamar['image'] )}}" class="card-img-top" alt=""  width="10rem" height="180rem">
                                         <div class="card-body d-flex flex-column">
                                             <h2 class="card-title text-center fw-semibold">{{ $kamar['jenis_kamar'] }}</h2>
                                             <div class="card-text d-flex flex-row justify-content-evenly">
@@ -105,7 +111,13 @@
                                             </div>
                                             <h5 class="card-title text-center">Tersedia {{ $kamar['ketersediaan'] }} Kamar</h5>
                                         </div>
+                                        @if($kamar['ketersediaan']==0)
+                                        <div class="alert alert-danger" role="alert">
+                                            <h6>Silahkan Anda dapat mereset tanggal Check-In dan Check-Out Anda, dikarenakan kamar sedang tidak dalam keadaan tersedia</h6>
+                                        </div>
+                                         @else
                                         <a href="/lihatkamar/{{ $kamar['jenis_kamar']}}/{{ auth()->user()->id}}" class="btn btn-dark mt-3" style="width: 100%;">Pesan Sekarang </a>
+                                        @endif
                                     </div>
                                 </div>
                                 @endif
@@ -116,7 +128,7 @@
 
                                 <div class="col-lg-6 my-2 pb-3 my-sm-0">
                                     <div class="card p-3 card-efek">
-                                        <img src="{{ asset('images/bahan1.jpeg')}}" class="card-img-top" alt="...">
+                                        <img src="{{ asset('gambar-kamar/'.$data->image)}}" class="card-img-top" alt=""  width="10rem" height="180rem">
                                         <div class="card-body d-flex flex-column">
                                             <h2 class="card-title text-center fw-semibold">{{ $data->jenis_kamar }}</h2>
                                             <div class="card-text d-flex flex-row justify-content-evenly">
@@ -125,7 +137,13 @@
                                             </div>
                                             <h5 class="card-title text-center">Tersedia {{ $data->ketersediaan }} Kamar</h5>
                                         </div>
-                                        <a href="/lihatkamar/{{ $data['jenis_kamar']}}/{{ auth()->user()->id}}" class="btn btn-dark mt-3" style="width: 100%;">Pesan Sekarang </a>
+                                        @if($data->ketersediaan==0)
+                                        <div class="alert alert-danger" role="alert">
+                                            <h6>Silahkan Anda dapat mereset tanggal Check-In dan Check-Out Anda, dikarenakan kamar sedang tidak dalam keadaan tersedia</h6>
+                                        </div>
+                                        @else
+                                        <a href="/lihatkamar/{{ $data->jenis_kamar}}/{{ auth()->user()->id}}" class="btn btn-dark mt-3" style="width: 100%;">Pesan Sekarang </a>
+                                        @endif
                                     </div>
                                 </div>
                                 @endforeach

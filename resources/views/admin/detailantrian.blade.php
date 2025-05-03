@@ -334,10 +334,29 @@
                                     </div>
                                     @elseif($tidakterdapatpembayaran==1)
                                     <div class="alert alert-danger" role="alert">
-                                        <h6><b>Maaf</b>, Pelanggan belum melakukan aktifasi untuk pemesanan jenis kamar ini.</h6>
-                                      </div>
-                                      <div class="card-footer text-right">
-                                        <a type="button" href="{{ route('lihatpemesananadmin') }}" class="btn btn-danger">Kembali</a>
+                                        <h6><b>Maaf</b>, Pelanggan belum melakukan Aktivasi untuk pemesanan jenis kamar ini.</h6>
+                                    </div>
+                                    <div class="card-footer text-right">
+                                        <a type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Hapus Pesanan Pelanggan</a>
+                                        <a type="button" href="{{ route('lihatpemesananadmin') }}" class="btn btn-dark">Kembali</a>
+
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Konfirmasi Hapus Pesanan Pelanggan</h1>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body text-start">
+                                                  Pastikan tanggal hari ini adalah tanggal <b>{{ \Carbon\Carbon::parse($tgl_pesan)->addDay(2)->format('Y-m-d') }}</b>  agar dapat sesuai dengan ketentuan dihalaman pelanggan
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                  <a type="button" href="/validasihapuspesananadmin/{{ $id_pemesanan }}" class="btn btn-danger">Hapus</a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
                                     </div>
                                     @endif
                                 </form>
