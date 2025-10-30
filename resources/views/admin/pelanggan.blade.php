@@ -105,7 +105,7 @@
                                 {{ $item->email}}
                             </td>
                             <td>
-                                <img src="{{ asset('storage/image-pelanggan/'.$item->image)}}" style="width: 130px" >
+                                <img src="{{ asset('gambar-user/'.$item->image)}}" style="width: 130px" >
                             </td>
                             {{-- <td class="project-actions text-center">
                                 <a class="btn btn-danger btn-sm" href="/akun/{{ $item->id }}/delete">

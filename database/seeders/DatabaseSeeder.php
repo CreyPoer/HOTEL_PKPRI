@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon; // <-- TAMBAHKAN INI
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,7 +24,7 @@ class DatabaseSeeder extends Seeder
             'no_telp' => '086741734136',
             'email' => 'indra@gmail.com',
             'password' => '123',
-            'image' => '',
+            'image' => '37478936481.jpg',
             'role' => 'Pelanggan',
             ],
             [
@@ -53,21 +54,21 @@ class DatabaseSeeder extends Seeder
             [
             'name' => 'Indra',
             'email' => 'indra@gmail.com',
-            'password' => Hash::make("123"),
-            'image' => '',
+            'password' => Hash::make('123'),
+            'image' => '37478936481.jpg',
             'role' => 'Pelanggan',
             ],
             [
             'name' => 'Andi',
             'email' => 'andi@gmail.com',
-            'password' => Hash::make("123456"),
+            'password' => Hash::make('123456'),
             'image' => '3523056801030089.jpeg',
             'role' => 'Pelanggan',
             ],
             [
             'name' => 'Alif',
             'email' => 'alif@gmail.com',
-            'password' => Hash::make("123"),
+            'password' => Hash::make('123'),
             'image' => '',
             'role' => 'Admin',
             ]
@@ -158,12 +159,16 @@ class DatabaseSeeder extends Seeder
             'image' => 'Vip.jpg',
             ]
         ]);
+
+        // =======================================================
+        // PERUBAHAN DI BAGIAN PEMESANANS
+        // =======================================================
         DB::table('pemesanans')->insert([
             [
             'pelanggan_id' => '1',
             'kamar_id' => '1',
-            'tgl_pesan' => '2024-01-15',
-            'tenggat_bayar' => null,
+            'tgl_pesan' => '2025-10-26', // <-- UBAH
+            'tenggat_bayar' => '2025-10-27', // <-- UBAH
             'check_in' => '2024-01-16',
             'check_out' => '2024-01-17',
             'lama_inap' =>1,
@@ -177,8 +182,8 @@ class DatabaseSeeder extends Seeder
             [
             'pelanggan_id' => '1',
             'kamar_id' => '5',
-            'tgl_pesan' => '2024-01-15',
-            'tenggat_bayar' => null,
+            'tgl_pesan' => '2025-10-26', // <-- UBAH
+            'tenggat_bayar' => '2025-10-27', // <-- UBAH
             'check_in' => '2024-01-16',
             'check_out' => '2024-01-19',
             'lama_inap' => 1,
@@ -192,8 +197,8 @@ class DatabaseSeeder extends Seeder
             [
             'pelanggan_id' => '2',
             'kamar_id' => '6',
-            'tgl_pesan' => '2024-01-11',
-            'tenggat_bayar' => '2024-01-12',
+            'tgl_pesan' => '2025-10-27', // <-- UBAH
+            'tenggat_bayar' => '2025-10-28', // <-- UBAH
             'check_in' => '2024-01-23',
             'check_out' => '2024-01-24',
             'lama_inap' => 1,
@@ -207,8 +212,8 @@ class DatabaseSeeder extends Seeder
             [
             'pelanggan_id' => '2',
             'kamar_id' => '2',
-            'tgl_pesan' => '2024-01-11',
-            'tenggat_bayar' => '2024-01-11',
+            'tgl_pesan' => '2025-10-28', // <-- UBAH
+            'tenggat_bayar' => '2025-10-29', // <-- UBAH
             'check_in' => '2024-01-15',
             'check_out' => '2024-01-16',
             'lama_inap' => 1,
@@ -222,8 +227,8 @@ class DatabaseSeeder extends Seeder
             [
             'pelanggan_id' => '2',
             'kamar_id' => '4',
-            'tgl_pesan' => '2024-01-10',
-            'tenggat_bayar' => '2024-01-10',
+            'tgl_pesan' => '2025-10-29', // <-- UBAH
+            'tenggat_bayar' => '2025-10-30', // <-- UBAH
             'check_in' => '2024-01-17',
             'check_out' => '2024-01-18',
             'lama_inap' => 1,
@@ -237,8 +242,8 @@ class DatabaseSeeder extends Seeder
             [
             'pelanggan_id' => '2',
             'kamar_id' => '4',
-            'tgl_pesan' => '2024-01-16',
-            'tenggat_bayar' => '2024-01-17',
+            'tgl_pesan' => '2025-10-30', // <-- UBAH
+            'tenggat_bayar' => '2025-10-31', // <-- UBAH
             'check_in' => '2024-01-02',
             'check_out' => '2024-01-03',
             'lama_inap' => 1,
@@ -251,11 +256,14 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
+        // =======================================================
+        // PERUBAHAN DI BAGIAN PEMBAYARANS
+        // =======================================================
         DB::table('pembayarans')->insert([
             [
             'pelanggan_id' => '1',
             'pemesanan_id' => '1',
-            'tgl_bayar' => '2024-01-15',
+            'tgl_bayar' => '2025-10-26', // <-- UBAH
             'metode_pembayaran' => 'ONLINE',
             'jumlah_pembayaran' => 125000,
             'rek_tujuan' => 'MANDIRI',
@@ -267,7 +275,7 @@ class DatabaseSeeder extends Seeder
             [
             'pelanggan_id' => '1',
             'pemesanan_id' => '2',
-            'tgl_bayar' => '2024-01-15',
+            'tgl_bayar' => '2025-10-26', // <-- UBAH
             'metode_pembayaran' => 'ONLINE',
             'jumlah_pembayaran' => 600000,
             'rek_tujuan' => 'MANDIRI',
@@ -279,7 +287,7 @@ class DatabaseSeeder extends Seeder
             [
             'pelanggan_id' => '2',
             'pemesanan_id' => '3',
-            'tgl_bayar' => '2024-01-11',
+            'tgl_bayar' => '2025-10-27', // <-- UBAH
             'metode_pembayaran' => 'OFFLINE',
             'jumlah_pembayaran' => 250000,
             'rek_tujuan' => null,
@@ -291,7 +299,7 @@ class DatabaseSeeder extends Seeder
             [
             'pelanggan_id' => '2',
             'pemesanan_id' => '4',
-            'tgl_bayar' => '2024-01-11',
+            'tgl_bayar' => '2025-10-28', // <-- UBAH
             'metode_pembayaran' => 'OFFLINE',
             'jumlah_pembayaran' => 160000,
             'rek_tujuan' => null,
@@ -303,7 +311,7 @@ class DatabaseSeeder extends Seeder
             [
             'pelanggan_id' => '2',
             'pemesanan_id' => '5',
-            'tgl_bayar' => '2024-01-10',
+            'tgl_bayar' => '2025-10-29', // <-- UBAH
             'metode_pembayaran' => 'OFFLINE',
             'jumlah_pembayaran' => 200000,
             'rek_tujuan' => null,
@@ -315,7 +323,7 @@ class DatabaseSeeder extends Seeder
             [
             'pelanggan_id' => '2',
             'pemesanan_id' => '6',
-            'tgl_bayar' => '2024-01-16',
+            'tgl_bayar' => '2025-10-30', // <-- UBAH
             'metode_pembayaran' => 'OFFLINE',
             'jumlah_pembayaran' => 400000,
             'rek_tujuan' => null,
@@ -333,9 +341,9 @@ class DatabaseSeeder extends Seeder
             'atas_nama' => ' HOTEL PKPRI',
             ],
             [
-            'rek_tujuan'  => 'Bank BRI',
-            "no_rek_tujuan"  => "0006-01-000884-56-9",
-            "atas_nama"  => "HOTEL PKPRI",
+            'rek_tujuan' => 'Bank BRI',
+            'no_rek_tujuan' => '0006-01-000884-56-9',
+            'atas_nama' => 'HOTEL PKPRI',
             ],
         ]);
         DB::table('testimonis')->insert([
@@ -389,367 +397,370 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
         DB::table('penguruses')->insert([[
-            "nama_pengurus"  => "Drs. H Edy Haryadi, M.Pd",
-            "jabatan"  => "Ketua 1",
+            'nama_pengurus' => 'Drs. H Edy Haryadi, M.Pd',
+            'jabatan' => 'Ketua 1',
         ],[
-            "nama_pengurus"  => "Aziz Syafiuddin, BSc, S.Sos",
-            "jabatan"  => "Ketua 2",
+            'nama_pengurus' => 'Aziz Syafiuddin, BSc, S.Sos',
+            'jabatan' => 'Ketua 2',
         ],[
-            "nama_pengurus"  => "Ciptaning Tekat, SKM, MM",
-            "jabatan"  => "Sekretaris",
+            'nama_pengurus' => 'Ciptaning Tekat, SKM, MM',
+            'jabatan' => 'Sekretaris',
         ],[
-            "nama_pengurus"  => "Mustakim, S.Pd",
-            "jabatan"  => "Bendahara 1",
+            'nama_pengurus' => 'Mustakim, S.Pd',
+            'jabatan' => 'Bendahara 1',
         ],[
-            "nama_pengurus"  => "Nuzullah Qurfianto, SE",
-            "jabatan"  => "Bendahara 2",
+            'nama_pengurus' => 'Nuzullah Qurfianto, SE',
+            'jabatan' => 'Bendahara 2',
         ],[
-            "nama_pengurus"  => "Drs. Ec.H Moh. Noer, MSA",
-            "jabatan"  => "Koordinator",
+            'nama_pengurus' => 'Drs. Ec.H Moh. Noer, MSA',
+            'jabatan' => 'Koordinator',
         ],[
-            "nama_pengurus"  => "Drs.Eddy Supyantoro",
-            "jabatan"  => "Anggota",
+            'nama_pengurus' => 'Drs.Eddy Supyantoro',
+            'jabatan' => 'Anggota',
         ],[
-            "nama_pengurus"  => "Achmad Riady, SH, MH",
-            "jabatan"  => "Anggota",
+            'nama_pengurus' => 'Achmad Riady, SH, MH',
+            'jabatan' => 'Anggota',
         ]]);
 
+        // =======================================================
+        // PERUBAHAN DI BAGIAN ANGGOTAS (SEMUA TANGGAL)
+        // =======================================================
         DB::table('anggotas')->insert([[
-            "nama_anggota"  => "Tunas Harapan",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Tunas Harapan',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Pengayoman",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Pengayoman',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Pemda",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Pemda',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Teratai",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Teratai',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Sumber Bahagia",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Sumber Bahagia',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Adil Makmur",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Adil Makmur',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Sentosa",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Sentosa',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Sejahtera",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Sejahtera',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Bangkit",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Bangkit',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Kopergu",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Kopergu',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Anantakupa",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Anantakupa',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Anugerah",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Anugerah',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Tunggal",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Tunggal',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Api Alam",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Api Alam',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Bhakti Husada",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Bhakti Husada',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Dewi Sri",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Dewi Sri',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Karya Bakti",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Karya Bakti',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Bima",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Bima',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Sumber Rejeki",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Sumber Rejeki',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Bakti Mulia",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Bakti Mulia',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Makmur",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Makmur',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Pawiyatan",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Pawiyatan',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Karya Dharma",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Karya Dharma',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Karya Makmur",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Karya Makmur',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Bakti",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Bakti',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "KPPDK",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'KPPDK',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Melati",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Melati',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Al-hidayah",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Al-hidayah',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Barokah",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Barokah',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Mutiara",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Mutiara',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Harapan",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Harapan',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Kokarperi",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Kokarperi',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Airdas",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Airdas',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Andini Jaya",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Andini Jaya',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Bahtera Kencana",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Bahtera Kencana',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Tiara",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Tiara',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Smada",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Smada',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Trunojoyo",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Trunojoyo',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Eka Prasetya",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Eka Prasetya',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Swasembada",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Swasembada',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Tutwurihandayani",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Tutwurihandayani',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Disbunda",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Disbunda',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Eka Karsa",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Eka Karsa',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Bhina Indag",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Bhina Indag',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Citra",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Citra',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Kopstik",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Kopstik',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Ikhlas Beramal",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Ikhlas Beramal',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Beringin",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Beringin',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Harapan Kita",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Harapan Kita',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Delima",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Delima',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Rahmat",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Rahmat',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Adiguna Sejahtera",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Adiguna Sejahtera',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Wahana SMK Baru",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Wahana SMK Baru',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Bumi Permata Hati",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Bumi Permata Hati',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "BAPDA",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'BAPDA',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ],[
-            "nama_anggota"  => "Tunas Mekar",
-            "no"  => " ",
-            "tanggal"  => "2024-02-01",
-            "pukul"  => "09:00",
-            "keterangan"  => " ",
+            'nama_anggota' => 'Tunas Mekar',
+            'no' => ' ',
+            'tanggal' => Carbon::now()->toDateString(), // <-- UBAH
+            'pukul' => '09:00',
+            'keterangan' => ' ',
         ]]);
     }
 }

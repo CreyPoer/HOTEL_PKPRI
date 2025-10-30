@@ -17,12 +17,12 @@ class AdminController extends Controller
         $totha = DB::table('pemesanans')
         ->where('status_pembayaran', 'Sudah Bayar')
         ->where('status_pesan', 'Sudah Aktif')
-        ->sum(DB::raw('total_harga'));
+        ->sum(DB::raw('COALESCE(total_harga, 0)'));
 
         $bitam = DB::table('pemesanans')
         ->where('status_pembayaran', 'Sudah Bayar')
         ->where('status_pesan', 'Sudah Aktif')
-        ->sum(DB::raw('biaya_tambahan'));
+        ->sum(DB::raw('COALESCE(biaya_tambahan, 0)'));
 
         $income = $totha + $bitam;
 
@@ -35,7 +35,7 @@ class AdminController extends Controller
         $kamar = Kamar::all();
         $users = Aktor::limit(5)->orderBy('created_at', 'desc')->where('role', 'Pelanggan')->get();
 
-        $total_harga = Pemesanan::select(DB::raw("CAST(SUM(total_harga) as int) + CAST(SUM(biaya_tambahan) as int) as total_harga"))
+        $total_harga = Pemesanan::select(DB::raw("CAST(SUM(COALESCE(total_harga, 0)) as SIGNED) + CAST(SUM(COALESCE(biaya_tambahan, 0)) as SIGNED) as total_harga"))
         ->where('status_pembayaran', 'Sudah Bayar')
         ->where('status_pesan', 'Sudah Aktif')
         ->groupBy(DB::raw("Month(tgl_pesan)"))
@@ -44,7 +44,7 @@ class AdminController extends Controller
 
 
         $bulan = Pemesanan::select(DB::raw("MONTHNAME(tgl_pesan) as bulan"))
-        ->groupBy(DB::raw("MONTHNAME(tgl_pesan)"))
+        ->groupBy(DB::raw("MONTHNAME(tgl_pesan)"), DB::raw("Month(tgl_pesan)"))
         ->orderByRaw("Month(tgl_pesan)")
         ->pluck('bulan');
 

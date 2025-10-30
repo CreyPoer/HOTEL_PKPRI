@@ -247,7 +247,7 @@
                                 <ul class="users-list clearfix">
                                     @foreach ($users as $item)
                                 <li>
-                                    <img src="{{ asset('storage/image-pelanggan/'.$item->image) }}" alt="User Image" width="60px" height="60px">
+                                    <img src="{{ asset('gambar-user/'.$item->image) }}" alt="User Image" width="60px" height="60px">
                                     <!-- <i class="fas fa-user"></i> -->
                                     <a class="users-list-name" href="#">{{ $item->nama }}</a>
                                 </li>
@@ -283,7 +283,7 @@
                                 <ul class="products-list product-list-in-card pl-2 pr-2">
                                     <li class="item">
                                         <div class="product-img">
-                                        <img src="{{ asset('storage/image-kamar/'.$item->image)}}" alt="Gambar" class="img-size-50">
+                                        <img src="{{ asset('gambar-kamar/'.$item->image)}}" alt="Gambar" class="img-size-50">
                                         </div>
                                         <div class="product-info">
                                         <a href="javascript:void(0)" class="product-title"> {{ $item->jenis_kamar }}
@@ -340,27 +340,20 @@
 {{-- <script src="{{ asset('lte/plugins/chart.js/Chart.min.js') }}"></script> --}}
 {{-- <script src="https://code.highcharts.com/highcharts.js"></script> --}}
 
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('lte/dist/js/demo.js') }}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('lte/dist/js/pages/dashboard2.js') }}"></script>
-
 <script>
     // Data yang diterima dari controller
     var totalHarga = <?php echo json_encode($total_harga)?>;
-
-    // Label bulan (sesuaikan dengan data yang diharapkan)
-    var bulan = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var bulan = <?php echo json_encode($bulan)?>; // <-- GANTI DENGAN INI
 
     // Inisialisasi chart pada elemen canvas dengan ID 'myChart'
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar', // Jenis grafik, misalnya 'bar', 'line', dll.
         data: {
-            labels: bulan, // Label bulan
+            labels: bulan, // <-- Sekarang datanya cocok (misal: ["October"])
             datasets: [{
                 label: 'Nominal Pendapatan',
-                data: totalHarga, // Data pendapatan
+                data: totalHarga, // <-- Sekarang datanya cocok (misal: [1635000])
                 backgroundColor: 'rgba(0, 255, 0, 0.2)', // Warna latar belakang
                 borderColor: 'rgba(0, 255, 0, 1)', // Warna garis batas
                 borderWidth: 1 // Lebar garis batas
@@ -373,11 +366,11 @@
                 }
             }
         }
-    });
+    });
 </script>
 
 <script>
-    function toggleMode() {
+function toggleMode() {
   const body = document.getElementById('body');
   const modeSwitch = document.getElementById('modeSwitch');
 

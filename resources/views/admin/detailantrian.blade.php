@@ -64,7 +64,7 @@
                                     <div class="row">
                                         <div class="card col-auto">
                                             <div class="zoom-effect">
-                                                <img src="{{ asset('storage/image-kamar/'.$Pemesanan->kamar->image)}}" class="card-img-top" alt="...">
+                                                <img src="{{ asset('gambar-kamar/'.$Pemesanan->kamar->image)}}" class="card-img-top" alt="...">
                                             </div>
                                             <div class="card-body bg-tan text-center   ">
                                                 <h3 class="card-title text-center" style="color:black;background:#ededed;width:100%;"><b>{{ $Pemesanan->kamar->jenis }}</b></h3>
