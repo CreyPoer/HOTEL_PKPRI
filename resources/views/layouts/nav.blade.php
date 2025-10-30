@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container d-flex align-items-center">
         <a class="navbar-brand fw-bold d-flex align-items-center" href="/home">
-            <img src="{{ asset('images/LOGO_PKPRI.PNG') }}" alt="Logo" width="34" height="34"
+            <img src="{{ asset('images/LOGO_PKPRI.png') }}" alt="Logo" width="34" height="34"
                 class="d-inline-block align-text-top">
             HOTEL KOPERASI
         </a>
@@ -129,7 +129,7 @@
     <div class="modal-content">
         <div class="modal-header" style="background-color: #ededed;" >
         <h1 class="modal-title fs-4 fw-bold text-dark" id="exampleModalLabel">
-            <img src="{{ asset('images/LOGO_PKPRI.PNG')}}" alt="Logo" width="36" height="36"
+            <img src="{{ asset('images/LOGO_PKPRI.png')}}" alt="Logo" width="36" height="36"
                 class="d-inline-block align-text-top">
                 Login
             </h1>
@@ -183,7 +183,7 @@
       <div class="modal-content" style="width: 35rem;">
         <div class="modal-header" style="background-color: #ededed;border-radius:15px 15px 0px 0px;">
           <h2 class="modal-title fs-4 fw-bold" id="DaftarLabel">
-          <img src="{{ asset('images/LOGO_PKPRI.PNG')}}" alt="Logo" width="45" height="45"
+          <img src="{{ asset('images/LOGO_PKPRI.png')}}" alt="Logo" width="45" height="45"
           class="d-inline-block align-text-top ">
           FORMULIR PENDAFTARAN</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

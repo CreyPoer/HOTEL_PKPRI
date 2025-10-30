@@ -30,7 +30,7 @@ use App\Http\Controllers\PembayaranController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/home');
 });
 
 Route::group(['middleware' => ['auth','CheckRole:Pelanggan']],function(){
